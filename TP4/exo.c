@@ -34,7 +34,7 @@ int remplirGrille(int grille[9][9], int n)
 		scanf_s("%d", &colonne);
 		printf("entrer la valeur:");
 		scanf_s("%d", &valeur);
-		if (ligne < n && colonne < n)
+		if (ligne < n && colonne < n && ligne > 0 && colonne > 0)
 		{
 			grille[ligne][colonne] = valeur;
 		}
@@ -50,7 +50,7 @@ int remplirGrille(int grille[9][9], int n)
 	return 0;
 }
 
-int afficherGrille(int grille[9][9], int n )
+void afficherGrille(int grille[9][9], int n )
 {
 	
 	for (int i = 0; i < n; i++)
@@ -78,6 +78,27 @@ int afficherGrille(int grille[9][9], int n )
 	}
 }
 
+int verificationGrille(int grille[9][9], int n, int ligne, int colonne, int valeur)
+{
+	if( valeur <= 1 && valeur >= n)
+	{
+		valeur = 0;
+	}
+	for (int i = 0; i < n; i++)
+	{
+		if (grille[i][colonne] == valeur)
+		{
+			valeur = 0;
+		}
+	}
+	for (int j = 0; j < n; j++)
+	{
+		if (grille[ligne][j] == valeur);
+		{
+			valeur = 0;
+		}
+	}
+}
 
 
 int main()
