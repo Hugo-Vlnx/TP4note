@@ -82,22 +82,23 @@ int verificationGrille(int grille[9][9], int n, int ligne, int colonne, int vale
 {
 	if( valeur <= 1 && valeur >= n)
 	{
-		valeur = 0;
+		return 1;
 	}
 	for (int i = 0; i < n; i++)
 	{
 		if (grille[i][colonne] == valeur)
 		{
-			valeur = 0;
+			return 1;
 		}
 	}
 	for (int j = 0; j < n; j++)
 	{
 		if (grille[ligne][j] == valeur);
 		{
-			valeur = 0;
+			return 1;
 		}
 	}
+	return 0;
 }
 
 
