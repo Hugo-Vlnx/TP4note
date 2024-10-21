@@ -14,16 +14,6 @@ int grilleInitiale(int grille[9][9], int n ) //n représente la taille de la gril
 			grille[i][j]=0;
 		}
 	}
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = 0; j < n; j++)
-		{
-			printf("%d", grille[i][j]);
-			printf(" ");
-		}
-		printf("\n");
-	}
-	
 	return 0;
 }
 
@@ -32,11 +22,11 @@ int remplirGrille(int grille[9][9], int n)
 	int ligne = 0;
 	int colonne = 0;
 	int valeur = 0;
-	int nombreDeBoucle = 0;
-	printf("combien de case voulez vopus remplir");
-	scanf_s("%d", &nombreDeBoucle);
+	int nombreDeModification = 0;
+	printf("combien de modification voulez vous faire : ");
+	scanf_s("%d", &nombreDeModification);
 
-	for(int i = 0; i < nombreDeBoucle; i++)
+	for(int i = 0; i < nombreDeModification; i++)
 	{
 		printf("entrer la ligne:");
 		scanf_s("%d", &ligne);
@@ -57,19 +47,46 @@ int remplirGrille(int grille[9][9], int n)
 		
 		
 	}
-
 	return 0;
-
-
 }
+
+int afficherGrille(int grille[9][9], int n )
+{
+	
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			if (grille[i][j] == 0)
+			{
+				printf(" |");
+			}
+			else
+			{
+				printf("%d", grille[i][j]);
+				printf("|");
+			}
+			
+		}
+		printf("\n");
+		for (int j = 0; j < n; j++)
+		{
+			printf("- ");
+
+		}
+		printf("\n");
+	}
+}
+
+
 
 int main()
 {
-	int n = 2;
+	int n = 4;
 	int grille[9][9];
 	grilleInitiale(grille, n);
 	remplirGrille(grille, n);
-
+	afficherGrille(grille, n);
 
 
 	return 0;
