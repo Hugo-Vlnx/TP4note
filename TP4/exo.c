@@ -34,15 +34,23 @@ int remplirGrille(int grille[9][9], int n)
 		scanf_s("%d", &colonne);
 		printf("entrer la valeur:");
 		scanf_s("%d", &valeur);
-		if (ligne < n && colonne < n && ligne > 0 && colonne > 0)
+		if (verificationGrille(grille, n, ligne, colonne, valeur) == 0)
 		{
-			grille[ligne][colonne] = valeur;
+			if (ligne < n && colonne < n && ligne > 0 && colonne > 0)
+			{
+				grille[ligne][colonne] = valeur;
+			}
+			else
+			{
+				printf("cette case n'existe pas \n");
+				i--;
+
+			}
 		}
 		else
 		{
-			printf("cette case n'existe pas \n");
+			printf("la valeur n'est pas compris entre 1 et %d ou alors  le nombre est deja present dans la logne ou la colonne \n", n);
 			i--;
-
 		}
 		
 		
