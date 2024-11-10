@@ -1,3 +1,5 @@
+// NOTE 14/20
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -36,7 +38,7 @@ int remplirGrille(int grille[9][9], int n)
 		scanf_s("%d", &valeur);
 		if (verificationGrille(grille, n, ligne, colonne, valeur) == 0)
 		{
-			if (ligne < n && colonne < n && ligne > 0 && colonne > 0)
+			if (ligne < n && colonne < n && ligne >= 0 && colonne >= 0) // la ligne et la colonne peuvent valoir 0
 			{
 				grille[ligne][colonne] = valeur;
 			}
@@ -88,24 +90,18 @@ void afficherGrille(int grille[9][9], int n )
 
 int verificationGrille(int grille[9][9], int n, int ligne, int colonne, int valeur)
 {
-	if( valeur <= 1 && valeur >= n)
+	if( valeur < 1 && valeur >= n) // peut valoir 1
 	{
 		return 1;
 	}
 	for (int i = 0; i < n; i++)
 	{
-		if (grille[i][colonne] == valeur)
+		if (grille[i][colonne] == valeur || grille[ligne][i] == valeur) // tu peux le faire en une fois
 		{
 			return 1;
 		}
 	}
-	for (int j = 0; j < n; j++)
-	{
-		if (grille[ligne][j] == valeur);
-		{
-			return 1;
-		}
-	}
+
 	return 0;
 }
 
